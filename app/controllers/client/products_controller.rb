@@ -53,4 +53,10 @@ def create
                              parameters: client_params
                             )
   end
+
+   def destroy
+    product_id = params[:id]
+    response = Unirest.delete("http://localhost:3000/api/products/#{product_id}")
+    render 'destroy.html.erb'
+  end
 end
