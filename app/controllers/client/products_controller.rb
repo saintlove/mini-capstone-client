@@ -21,7 +21,9 @@ def create
                             "http://localhost:3000/api/products",
                             parameters: client_params
                             )
-    render 'create.html.erb'
+    product = response.body
+    flash[:success] = "Successfully created product"
+    redirect_to "/client/products/#{ product["id"] }"
   end
 
   def show
@@ -52,11 +54,16 @@ def create
                              "http://localhost:3000/api/products/#{ params[:id] }",
                              parameters: client_params
                             )
+    product = response.body
+    flash[:sucess] = "Successfully Updated Product"
+    redirect_to "/client/products/#{ product["id"] }"
   end
 
    def destroy
     product_id = params[:id]
     response = Unirest.delete("http://localhost:3000/api/products/#{product_id}")
-    render 'destroy.html.erb'
+    
+    flash[:success] = "Successfully destroyed product"
+    redirect_to "/"
   end
 end
