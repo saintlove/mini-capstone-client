@@ -22,8 +22,8 @@ def create
     client_params = {
                          name: params[:name],
                          price: params[:price],
-                         image_url: params[:image_url],
                          description: params[:description],
+                         supplier_id: params[:supplier_id]
                          
                     }
     response = Unirest.post(
@@ -53,8 +53,8 @@ def create
     client_params = {
                          name: params[:name],
                          price: params[:price],
-                         image_url: params[:image_url],
                          description: params[:description],
+                         supplier_id: params[:supplier_id]
                          
                          
                          
