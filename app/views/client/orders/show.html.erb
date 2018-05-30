@@ -1,0 +1,12 @@
+<h1>Order #43443 <%= @order['id']%></h1>
+<h6>Purchased On: <%= @order['purchased_on'] %></h6>
+<h2>Customer: <%= @order['user']['email'] %></h2>
+
+<h2>Product Name: <%= @order['product']['name'] %></h2>
+
+<img src ="<%= @order['product']['images'][0]['url'] %>">
+<h2>Price: <%= @order['product']['formatted']['price'] %></h2>
+<h2>Quantity: <%= @order['quantity'] %></h2>
+<h2>Subtotal: <%= @order['formatted']['subtotal']%></h2>
+<h2>Tax: <%= @order['formatted']['tax']%></h2>
+<h2>Total: <%= @order['formatted']['total']%></h2>

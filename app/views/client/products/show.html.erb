@@ -1,15 +1,24 @@
 <h2><%= @product["name"] %></h2>
-<h3>Price: <%= @product["formatted"]["price"] %></h3>
-<h3>Tax: <%= @product["formatted"]["tax"] %></h3>
-<h3>Total: <%= @product["formatted"]["total"] %></h3>
+<h4>Price: <%= @product["formatted"]["price"] %></h4>
+<h4>Tax: <%= @product["formatted"]["tax"] %></h4>
+<h4>Total: <%= @product["formatted"]["total"] %></h4>
 <h4>Description: <%= @product["description"] %></h4>
 
 <% @product["images"].each do |image| %>
+  <img src="<%= image["url"] %>">
+<% end %>
+<br>
 
-<img src="<%= image["url"] %>">
+<%= form_tag "/client/orders", method: :post do %>
+<input type="hidden" name="product_id" value="<%= @product['id'] %>">
+ 
+  <div>
+    Quantity: <input type="text" name="quantity">
+  </div>
+  <input type="submit" value="Create Order">
 <% end %>
 
-<h4>Supplier: <%= @product["supplier"]["name"] %></h4>
+<h6>Supplier: <%= @product["supplier"]["name"] %></h6>
 
 
 <a href="/client/products/<%= @product['id'] %>/edit">Edit</a>
