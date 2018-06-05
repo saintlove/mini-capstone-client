@@ -1,18 +1,23 @@
-<!-- <form action="client/products" method="post"> -->
-  <%= form_tag "/client/products", method: :post do %>
-  <div>
-    Name: <input type="text" name="name">
-  </div>
-  <div>
-    Price: <input type="text" name="price">
-  </div>
-  <div>
-    Description: <input type="text" name="description">
-
-  <div>
-    Supplier ID: <input type="text" name="supplier_id">
-
-  <input type="submit" value="Create Product">
-  
+<% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+      <li><%= error %></li>
+    <% end %>
+  </ul>
 <% end %>
-<!-- </form> -->
+
+<%= form_tag "/client/products", method: :post do %>
+  <div>
+    Name: <input type="text" name="name" value="<%= @product['name'] %>" />
+  </div>
+  <div>
+    Price: <input type="text" name="price" value="<%= @product['price'] %>" />
+  </div>
+  <div>
+    Description: <input type="text" name="description" value="<%= @product['description'] %>" />
+  </div>
+  <div>
+    Supplier ID: <input type="text" name="supplier_id" value="<%= @product['supplier_id'] %>">
+  </div>
+  <input type="submit" name="" value="Create Product" />
+<% end %>
