@@ -10,25 +10,24 @@
   </ul>
 </ul>
 
-
-<%= form_tag "/client/products", method: :get do %>
-  <input type="text" name="search" placeholder="Search Term">
-  <input type="submit" value="Go!">
-<% end %>
-
-
+<div class="row">
 <% @products.each do |product| %>
- <h2><a href="/client/products/<%= product["id"] %>"><%= product["name"] %></a></h2>
+  <div class="col-md-4">
 
-  <% if product["discounted"] %>
-    <h3>Discount Item! </h3>
-  <% else %>
-    <h3>Everyday Value! </h3>
-  <% end %>
+    <div class="card mb-5" style="width: 18rem;">
+        <img class="card-img-top" src="<%= product['image_url'] %>" alt="">
+        <div class="card-body">
+          <h5 class="card-title"><%= product["name"] %></h5>
+          <p class="card-text">Description: <%= product["description"] %></p>
+          <p class="card-text">Price: <%= product["formatted"]["price"] %></p>
+          <a href="/client/products/<%= product["id"] %> class="btn btn-primary">More Info</a>
+        </div>
+      </div>
+
+    </div>
 
 
-  <h3 style="color: red;"><%= product["formatted"]["price"] %></h3>
-  <h4>Description: <%= product["description"] %></h4>
+
   <img src="<%= product["image_url"] %>" alt="" >
   
 <% end %>
